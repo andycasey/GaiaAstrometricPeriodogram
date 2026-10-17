@@ -1,0 +1,53 @@
+\documentclass{article}
+\usepackage[letterpaper, textwidth=5.5in, textheight=9.0in]{geometry}
+\usepackage{graphicx} % Required for inserting images
+
+% text and typesetting macros
+\usepackage{setspace}
+\setstretch{1.08}
+\renewcommand{\paragraph}[1]{\medskip\par\noindent{\textbf{#1}}~---}
+\sloppy\sloppypar\raggedbottom
+\frenchspacing
+\newcommand{\documentname}{\textsl{Note}}
+\newcommand{\sectionname}{Section}
+\newcommand{\secref}[1]{\sectionname~\ref{#1}}
+
+% math macros
+\usepackage{amsmath}
+
+% collaboration / writing / commenting macros
+\usepackage{xcolor}
+\newcommand{\hoggsay}[1]{{\color{blue} (Hogg says: #1)}}
+
+\title{\bfseries A custom periodogram for \textsl{Gaia} astrometric residuals.}
+\author{Hogg for Ramirez~Delgado and friends}
+\date{October 2026}
+\begin{document}
+\maketitle
+
+\paragraph{Abstract}
+We provide a replacement for the periodogram that knows about ``scan angle'' and also knows that the signals we care about are elliptically polarized.
+
+\section{Introduction}
+ESA \textsl{Gaia}'s data is fundamentally one-dimensional, and it is entirely in the time domain:
+To a very good approximation, \textsl{Gaia} scans the sky and measures the \emph{times} at which stars transit a fiducial point in each of two focal planes.
+In this brief \documentname, we ask:
+\begin{itemize}
+    \item If \textsl{Gaia} does a good job of fitting every object with some kind of kinematic model (parallax and proper motion, say, or even a more sophisticated model), and
+    \item if \textsl{Gaia} releases the timing residuals away from that model (or code to compute them), then
+    \item can we find periodic signals (of the kinds relevant to astronomy) with some kind of modified periodogram?
+\end{itemize}
+We are writing this note, so obviously the answer is ``yes.''
+
+\section{Assumptions and choices}
+\paragraph{Residual data}
+For the purposes of this \documentname, we will assume that a very good kinematic model of every star has been subtracted, and we are left with good residuals.
+The model could be generalized, of course.
+
+\paragraph{Generative model}
+
+\paragraph{Noise and robustness}
+
+\section{The method}
+
+\end{document}
