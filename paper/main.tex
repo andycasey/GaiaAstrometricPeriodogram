@@ -72,14 +72,21 @@ Note that the sign of $\vec{a}\times\vec{b}\equiv\vec{a}\wedge\vec{b}$ (which, i
 The fundamental assumption is that we see noisy projections of the periodic elliptical offfset motion.
 That is,
 \begin{align}
-    y_n &= \hat{\psi}_n\cdot\vec{\theta}(t_n) + s_n \\
+    y_n &= \hat{\psi}_n\cdot\vec{\theta}(t_n) + s_n \label{eq:genmodel}\\
     \hat{\psi}_n &= \hat{x}\,\cos\psi_n + \hat{y}\,\sin\psi_n ~,
 \end{align}
 where $\hat{\psi}_n$ is a unit 2-vector defining pointing in the scan direction,
 $s_n$ is a ``residual'' or ``noise'' or ``incorrectness'' (we will call it the latter so as not to overload the word ``residual'' and not to attribute too much to the meaning of the $s_n$),
 and $\hat{x},\hat{y}$ are orthonormal 2-vectors defining the on-sky coordinate system in which the scan angle $\psi_n$ is defined (and indeed in which all of our on-sky 2-vectors are defined).
 
-We can rotate this expression into a frame that is aligned with the semi-axes $\vec{a},\vec{b}$ and take the dot product explicitly to get
+All of these expressions, by the way, depend on the handedness of the \textsl{Gaia} definition of the scan angle $\psi$.
+In some sense, the \textsl{Gaia} sign convention sets the handedness of the $\hat{x},\hat{y}$ coordinate system,
+and the meaning of a positive value for $\vec{a}\wedge\vec{b}$.
+That is, there is a correspondence between the handedness of the scan-angle definition, the handedness of the $\hat{x},\hat{y}$ coordinate system,
+the handedness of the $\vec{a},\vec{b}$ direction pair, and the elliptical polarization of the residual motion we are modeling.
+For our own scientific purposes, we don't care about this overall sign, but for some purposes it might be important to understand or control this.
+
+We can rotate the expression \eqref{eq:genmodel} into a frame that is aligned with the semi-axes $\vec{a},\vec{b}$ and take the dot product explicitly to get
 \begin{align}
     y_n &= |\vec{a}|\,\cos(\psi_n-\psi_0)\,\cos(\omega\,t-\phi_0) \pm |\vec{b}|\,\sin(\psi_n-\psi_0)\,\sin(\omega\,t-\phi_0) ~,
 \end{align}
@@ -98,6 +105,9 @@ If you carry forward the mathematics, and apply either useful trig identities, o
 \end{align}
 where really we take the real part of this expression,
 and $Z_+, Z_-$ are complex coefficients.
+That is, we want to know the complex coefficients; the ratio of imaginary to real parts of the coefficients will relate
+to the offsets $\phi_0,\psi_0$.
+
 The complex coefficients are related to the vectors and angles and phases as follows:
 \begin{align}
     |\vec{a}| &= foo \\
@@ -112,6 +122,7 @@ The simplest (and slowest) version of the method we are proposing here is to use
     \begin{bmatrix} Z_+ \\ Z_- \end{bmatrix} &= [X^\top\,C^{-1}\,X]^{-1}\,X^\top\,C^{-1}\,Y ~,
 \end{align}
 where $X$ is \hoggsay{what now?}
+Note that both the design matrix $X$ and the output $[Z_+,Z_-]$ are complex in the most naive implementation of this.
 
 \hoggsay{A more robust method is to do what now?}
 
@@ -123,5 +134,8 @@ where $X$ is \hoggsay{what now?}
 \section{Experiments and results}\label{sec:experiments}
 
 \section{Discussion}\label{sec:discussion}
+
+\paragraph{Acknowledgments}
+It is a pleasure to thank Andy Casey (Monash, Flatiron) for help with early versions of this.
 
 \end{document}
